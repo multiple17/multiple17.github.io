@@ -1,0 +1,84 @@
+<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="code_li_bi_ton_xp_gch_0"></a>code lại bài toán xếp gạch</h1>
+<h2 class="code-line" data-line-start=1 data-line-end=2 ><a id="yu_cu_1"></a>yêu cầu</h2>
+<p class="has-line-data" data-line-start="2" data-line-end="3"><strong>input</strong> :</p>
+<ul>
+<li class="has-line-data" data-line-start="3" data-line-end="4">dòng đầu chứa số nguyên dương t.</li>
+<li class="has-line-data" data-line-start="4" data-line-end="6">t dòng tiếp theo, mỗi dòng chứa một số nguyên dương n ứng với một truy vấn.<br>
+<strong>output</strong> :</li>
+<li class="has-line-data" data-line-start="6" data-line-end="7">ứng với mỗi truy vấn, in ra số gạch thừa theo phương án tìm được.</li>
+</ul>
+<h3 class="code-line" data-line-start=7 data-line-end=8 ><a id="gii_thch_thut_ton__s_dng_thut_ton_lc_nguyn_t_c_bn_thut_ton_ngy_th_v_vng_lp__tm_tch_2_snt_lin_tip_nh_hn_n_i_vi_python___s_dng_sng_nguyn_t_phc_tp_hn_nhanh_hn_v_tm_kim_nh_phn__n_c_100_test_7"></a>giải thích thuật toán : sử dụng thuật toán lọc nguyên tố cơ bản (thuật toán ngây thơ) và vòng lặp để tìm tích 2 snt liên tiếp nhỏ hơn n (đối với python ) ; sử dụng sàng nguyên tố phức tạp hơn, nhanh hơn và tìm kiếm nhị phân để ăn được 100% test</h3>
+<h3 class="code-line" data-line-start=8 data-line-end=9 ><a id="code__n_c_30_test_8"></a>code để ăn được 30% test:</h3>
+<pre><code class="has-line-data" data-line-start="10" data-line-end="29" class="language-python=">def snt(i) 
+    for p in range(2,i) :
+        if (i%p == 0) : return False
+    return True
+
+t = int(input())
+for i in range(1,t + 1) :
+    n = int(input())
+    listsnt = []
+    for i in range(2, n) :
+        if (snt(i) == True) : listsnt.append(i)
+    for u in range(1, len(listsnt) - 2) :
+        tichsnt = listsnt[u] * listsnt[u + 1]
+        if (tichsnt &lt;= n) :
+            kq = n - tichsnt
+        else : break
+    print(int(kq))
+        
+</code></pre>
+<h3 class="code-line" data-line-start=29 data-line-end=30 ><a id="code__n_c_100_test_29"></a>code để ăn được 100% test:</h3>
+<pre><code class="has-line-data" data-line-start="31" data-line-end="82" class="language-cpp=">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define e = 1000044
+int a[1000044]
+vector&lt;long long&gt; v;
+void sangnt() {
+    for (long long i = 1; i &lt;= e; i++) {
+        a[i] = 1;
+    }
+    t[0] =t[1] = 0;
+    for (long long i = 2, i*i &lt;= e; i ++) {
+        if (a[i] == 1) {
+            for (long long j = i*i ; j &lt;= e; j += i) {
+                a[j] = 0;
+                }
+            }
+        }
+    for (int i = 2 ; i &lt;= e; i++) {
+        if (a[i] == 1) {
+            v.pushback(i);
+        }
+    }
+    
+}
+void nhap() {
+    int m ,hieu;
+    cin &gt;&gt; m;
+    for (int i = 1; i &lt;= m; i++) {
+        int n;
+        cin &gt;&gt; n;
+        d = 0;
+        c =v.size() - 1;
+        while (d &lt;= c) {
+            g = (d + c)/2;
+            if (v[g] * v[g - 1] &lt;= n) {
+                hieu = n - (v[g]*v[g - 1]);
+                d = g + 1;
+            }
+            else c = g -1;
+        } 
+    }
+    cout &lt;&lt;hieu &lt;&lt;endl;
+}
+main () {
+    sangnt();
+    nhap();
+}
+
+
+</code></pre>
+<h2 class="code-line" data-line-start=82 data-line-end=83 ><a id="Trn_y_l_phn_code_mu_ca_mnh_nu_n_c_ch_i_vi_vic_hc_lp_trnh_ca_bn_mong_bn_ng_h_Xin_cm_n_82"></a>Trên đây là phần code mẫu của mình, nếu nó có ích đối với việc học lập trình của bạn, mong bạn ủng hộ. Xin cảm ơn.</h2>
+<hr>
